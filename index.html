@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinematography & Composition Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <small>Cinematography & Composition Lab</small>
+        <h1>Studi Kasus Interaktif</h1>
+      </div>
+      <div class="controls">
+        <nav class="pill-group" aria-label="Pilih studi kasus">
+          <button class="pill active" data-case="case2">Studi Kasus 02</button>
+          <button class="pill" data-case="case18">Studi Kasus 18</button>
+        </nav>
+        <button id="simToggle" class="toggle-btn active" aria-pressed="true">Simulator: Aktif</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero"></section>
+
+      <section class="workspace">
+        <article class="panel" id="simPanel">
+          <div class="panel-head">
+            <div>
+              <h3 id="simTitle">Simulator Visual</h3>
+              <p id="simDesc"></p>
+            </div>
+            <span class="chip" id="simChip">Interaktif</span>
+          </div>
+          <div id="simCase2" class="simulator case-sim">
+            <div class="sim-viewport" id="tiltViewport" aria-label="Simulator pergerakan kamera tilt">
+              <div class="sim-badge" id="tiltBadge">Mode: Tilting (Vertikal)</div>
+              <div class="scene-world" id="tiltWorld">
+                <div class="sky"></div>
+                <div class="roof"></div>
+                <div class="building">
+                  <div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div>
+                  <div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div>
+                  <div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div>
+                  <div class="entrance"></div>
+                </div>
+                <div class="courtyard"></div>
+                <div class="path"></div>
+                <div class="tree" style="left:18%"></div>
+                <div class="tree" style="left:30%; bottom:24%; transform:scale(0.9)"></div>
+                <div class="tree" style="left:68%; bottom:25%; transform:scale(0.95)"></div>
+                <div class="tree" style="left:78%"></div>
+              </div>
+              <div class="viewfinder"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span></div>
+            </div>
+            <div class="sim-controls">
+              <div class="control-row">
+                <button class="btn primary" id="playTilt">Play Tilt Up</button>
+                <button class="btn" id="modeTilt">Mode: Tilting</button>
+                <button class="btn" id="modePan">Bandingkan: Panning</button>
+                <span class="stat" id="angleReadout">Sudut: -15°</span>
+              </div>
+              <label class="hint" for="tiltSlider" id="sliderLabel">Geser untuk mengarahkan kamera secara vertikal (halaman → atap)</label>
+              <input type="range" id="tiltSlider" min="0" max="100" value="0" />
+            </div>
+          </div>
+
+          <div id="simCase18" class="simulator case-sim hidden">
+            <div class="sim-viewport" aria-label="Simulator leading lines dan perspektif satu titik hilang">
+              <svg class="svg-wrap" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Koridor dengan perspektif satu titik hilang">
+                <defs>
+                  <linearGradient id="corridorBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#232B2B"/>
+                    <stop offset="100%" stop-color="#181D1D"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="800" height="420" fill="url(#corridorBg)"/>
+                <!-- ceiling/walls/floor -->
+                <polygon points="0,0 800,0 400,170 0,170" fill="#242C2C"/>
+                <polygon points="0,420 800,420 400,170 0,170" fill="#202727"/>
+                <polygon points="800,0 800,420 400,170" fill="#222929"/>
+                <polygon points="0,0 0,420 400,170" fill="#262E2E"/>
+                <!-- doors/windows left -->
+                <g fill="#2E3737" stroke="#3A4545">
+                  <rect x="70" y="150" width="55" height="120" rx="2"/>
+                  <rect x="150" y="155" width="45" height="100" rx="2"/>
+                  <rect x="210" y="160" width="35" height="82" rx="2"/>
+                  <rect x="255" y="163" width="26" height="68" rx="2"/>
+                </g>
+                <!-- doors/windows right -->
+                <g fill="#2E3737" stroke="#3A4545">
+                  <rect x="675" y="150" width="55" height="120" rx="2"/>
+                  <rect x="605" y="155" width="45" height="100" rx="2"/>
+                  <rect x="555" y="160" width="35" height="82" rx="2"/>
+                  <rect x="519" y="163" width="26" height="68" rx="2"/>
+                </g>
+                <!-- floor tiles -->
+                <g stroke="#334040" stroke-width="1">
+                  <line x1="0" y1="420" x2="400" y2="170"/>
+                  <line x1="800" y1="420" x2="400" y2="170"/>
+                  <line x1="120" y1="420" x2="400" y2="170"/>
+                  <line x1="240" y1="420" x2="400" y2="170"/>
+                  <line x1="360" y1="420" x2="400" y2="170"/>
+                  <line x1="440" y1="420" x2="400" y2="170"/>
+                  <line x1="560" y1="420" x2="400" y2="170"/>
+                  <line x1="680" y1="420" x2="400" y2="170"/>
+                  <line x1="40" y1="360" x2="760" y2="360"/>
+                  <line x1="90" y1="315" x2="710" y2="315"/>
+                  <line x1="140" y1="280" x2="660" y2="280"/>
+                  <line x1="190" y1="250" x2="610" y2="250"/>
+                  <line x1="240" y1="225" x2="560" y2="225"/>
+                  <line x1="285" y1="205" x2="515" y2="205"/>
+                  <line x1="330" y1="188" x2="470" y2="188"/>
+                </g>
+                <!-- end door -->
+                <rect x="360" y="120" width="80" height="70" fill="#313B3B" stroke="#425050"/>
+                <circle cx="430" cy="156" r="3" fill="#8FA6A6"/>
+
+                <!-- Leading lines overlay -->
+                <g id="leadingOverlay" class="overlay-group">
+                  <line x1="0" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="3" opacity="0.85"/>
+                  <line x1="800" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="3" opacity="0.85"/>
+                  <line x1="0" y1="170" x2="400" y2="170" stroke="#8FA8A8" stroke-width="2.5" opacity="0.75"/>
+                  <line x1="800" y1="170" x2="400" y2="170" stroke="#8FA8A8" stroke-width="2.5" opacity="0.75"/>
+                  <line x1="120" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="1.5" opacity="0.5"/>
+                  <line x1="680" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="1.5" opacity="0.5"/>
+                  <line x1="240" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="1.2" opacity="0.4"/>
+                  <line x1="560" y1="420" x2="400" y2="170" stroke="#8FA8A8" stroke-width="1.2" opacity="0.4"/>
+                  <circle cx="400" cy="170" r="22" fill="none" stroke="#8FA8A8" stroke-width="2"/>
+                  <circle cx="400" cy="170" r="4" fill="#8FA8A8"/>
+                  <text x="414" y="152" font-family="'DM Sans', sans-serif" font-size="13" fill="#A7B4B4">Vanishing Point</text>
+                </g>
+
+                <!-- Subject (student) -->
+                <g id="subjectGroup" class="subject-focus highlight">
+                  <ellipse cx="400" cy="214" rx="16" ry="4" fill="#4A5858" opacity="0.6"/>
+                  <rect x="393" y="185" width="14" height="24" rx="5" fill="#8FA6A6"/>
+                  <circle cx="400" cy="178" r="7" fill="#A7B4B4"/>
+                  <line x1="396" y1="205" x2="392" y2="216" stroke="#8FA8A8" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="404" y1="205" x2="408" y2="216" stroke="#8FA8A8" stroke-width="3" stroke-linecap="round"/>
+                </g>
+              </svg>
+              <div class="sim-badge">Perspektif Koridor · Subjek di Ujung</div>
+            </div>
+            <div class="sim-controls">
+              <div class="control-row">
+                <button class="btn primary active" id="toggleOverlay">Overlay Leading Lines: Aktif</button>
+                <button class="btn active" id="toggleFocus">Sorotan Fokus: Aktif</button>
+                <span class="stat">Titik temu: Siswa di vanishing point</span>
+              </div>
+              <p class="hint">Aktifkan overlay untuk melihat bagaimana garis lantai, pintu, dan jendela memandu mata ke subjek utama.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel qa-section">
+          <div class="panel-head">
+            <div>
+              <h3>Analisis & Jawaban</h3>
+              <p id="qaIntro"></p>
+            </div>
+            <span class="chip serif" id="qaCount">4 Pertanyaan</span>
+          </div>
+          <div class="qa-grid" id="qaGrid"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="focusModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <div>
+          <div class="modal-tag" id="modalTag">Presentation / Focus Mode</div>
+          <h3 id="modalTitle"></h3>
+        </div>
+        <button class="close-btn" id="closeModal" aria-label="Tutup">Tutup</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast">Jawaban disalin</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
